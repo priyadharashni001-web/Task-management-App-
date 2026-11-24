@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Task Management Application</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Authentication Section (Login / Register) -->
+  <div id="auth-container" class="container">
+    <div class="auth-card">
+      <h2 id="auth-title">Login to Task Manager</h2>
+      <p id="auth-subtitle">Manage your daily tasks efficiently</p>
+      
+      <form id="auth-form">
+        <div class="input-group" id="name-group" style="display: none;">
+          <label for="username">Full Name</label>
+          <input type="text" id="username" placeholder="Enter your name">
+        </div>
+        
+        <div class="input-group">
+          <label for="email">Email Address</label>
+          <input type="email" id="email" placeholder="Enter your email" required>
+        </div>
+        
+        <div class="input-group">
+          <label for="password">Password</label>
+          <input type="password" id="password" placeholder="Enter password" required>
+        </div>
+        
+        <button type="submit" class="btn primary-btn" id="auth-submit-btn">Login</button>
+      </form>
+      
+      <p class="toggle-text">
+        <span id="toggle-msg">Don't have an account?</span>
+        <a href="#" id="toggle-auth">Register here</a>
+      </p>
+    </div>
+  </div>
+
+  <!-- Main Dashboard Section -->
+  <div id="dashboard-container" class="container" style="display: none;">
+    <header class="app-header">
+      <div>
+        <h1>Task Manager</h1>
+        <p id="welcome-user">Welcome, User!</p>
+      </div>
+      <button id="logout-btn" class="btn danger-btn">Logout</button>
+    </header>
+
+    <!-- Live Task Stats -->
+    <div class="stats-bar">
+      <div class="stat-box">
+        <h3 id="total-tasks">0</h3>
+        <span>Total</span>
+      </div>
+      <div class="stat-box">
+        <h3 id="pending-tasks">0</h3>
+        <span>Pending</span>
+      </div>
+      <div class="stat-box">
+        <h3 id="completed-tasks">0</h3>
+        <span>Completed</span>
+      </div>
+    </div>
+
+    <!-- Create / Update Task Form -->
+    <div class="task-form-card">
+      <h3 id="form-heading">Add New Task</h3>
+      <form id="task-form">
+        <input type="hidden" id="edit-task-id">
+        <div class="form-row">
+          <input type="text" id="task-title" placeholder="Task Title (e.g., Complete Web Project)" required>
+          <select id="task-priority">
+            <option value="Low">Low Priority</option>
+            <option value="Medium" selected>Medium Priority</option>
+            <option value="High">High Priority</option>
+          </select>
+        </div>
+        <textarea id="task-desc" rows="2" placeholder="Task Description (optional)"></textarea>
+        <div class="form-row">
+          <input type="date" id="task-due" required>
+          <button type="submit" class="btn primary-btn" id="save-task-btn">Add Task</button>
+          <button type="button" class="btn secondary-btn" id="cancel-edit-btn" style="display: none;">Cancel</button>
+        </div>
+      </form>
+    </div>
+
+    <!-- Search & Filter Controls -->
+    <div class="controls-bar">
+      <input type="text" id="search-input" placeholder="Search tasks...">
+      <div class="filter-buttons">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="pending">Pending</button>
+        <button class="filter-btn" data-filter="completed">Completed</button>
+      </div>
+    </div>
+
+    <!-- Task List Display -->
+    <div id="task-list" class="task-list">
+      <!-- Tasks will be dynamically rendered here -->
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
